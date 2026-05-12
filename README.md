@@ -3,7 +3,7 @@
 Minimal SWIFT trigger activity builder for DUNE-HD.
 
 Takes a pickle file of Trigger Primitives (TPs)  and produces a DataFrame
-of Trigger Activities (TAs) using a sliding time window + DBSCAN clustering.
+of Trigger Activities (TAs) using local energy estimation in a fixed time grid + DBSCAN clustering.
 
 ## Dependencies
 
