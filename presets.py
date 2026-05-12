@@ -13,7 +13,7 @@ COLLECTION_CENTRAL = dict(
     plane=2,
     inspect_threshold=15e3,
     accept_threshold=55e3,
-    cluster_cut=15e3,
+    cluster_cut=22e3,
     peak_adc_cut=80,
     tot_cut=8,
 )
@@ -22,7 +22,7 @@ COLLECTION_LATERAL = dict(
     plane=2,
     inspect_threshold=15e3,
     accept_threshold=130e3,
-    cluster_cut=17e3,
+    cluster_cut=30e3,
     peak_adc_cut=80,
     tot_cut=8,
 )
