@@ -44,3 +44,25 @@ INDUCTION_U_CENTRAL = dict(
     peak_adc_cut=80,
     tot_cut=4,
 )
+
+
+# LOOSE THRESHOLDS for 3-view set-up
+
+
+COLLECTION_CENTRAL_3VIEW = dict(
+    plane=2,
+    inspect_threshold=15e3,
+    accept_threshold=55e3,
+    cluster_cut=15e3,
+    peak_adc_cut=80,
+    tot_cut=8,
+)
+
+COLLECTION_LATERAL_3VIEW = dict(
+    plane=2,
+    inspect_threshold=15e3,
+    accept_threshold=130e3,
+    cluster_cut=15e3,
+    peak_adc_cut=80,
+    tot_cut=8,
+)
