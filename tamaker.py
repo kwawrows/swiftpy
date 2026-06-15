@@ -269,11 +269,8 @@ class TAMaker:
 
     def _build_windows(self, df):
         windows = (
-            df.groupby(["event", "bin", "rop", "apa_id"])
-            .agg(total_window_energy=("adc_integral", "sum"),
-                 TP_count=("adc_integral", "size"))
-            .reset_index()
-        )
+            df.groupby(["event", "run", "subrun", "bin", "rop", "apa_id"]).agg(total_window_energy=("adc_integral", "sum"),
+                 TP_count=("adc_integral", "size")).reset_index())
         windows["flag"] = 0
         mask_inspect = (windows["total_window_energy"] > self.inspect_threshold) & (windows["TP_count"] > 1)
         windows.loc[mask_inspect, "flag"] = 1
@@ -339,13 +336,15 @@ class TAMaker:
 
         ta_index = windows.copy()
         ta_index["window_start"] = ta_index["bin"] * self.window_size
-        ta_index = ta_index[["event", "apa_id", "window_start", "rop", "TA_id"]]
+        ta_index = ta_index[["event", "run", "subrun","apa_id", "window_start", "rop", "TA_id"]]
 
         return df.merge(ta_index, on=["event", "apa_id", "window_start", "rop"], how="inner")
 
     def _make_record(self, row, flag, n_cl, mean_cl, tot_cl, max_cl, moments):
         return {
             "event":               row.event,
+            "run":                 row.run,
+            "subrun":              row.subrun,
             "apa_id":              row.apa_id,
             "rop":                 row.rop,
             "window_start":        row.bin * self.window_size,
